@@ -96,7 +96,11 @@ void painterUtils::drawRectangleBar(QPainter &qp ,int const &startPos,int const 
     qp.fillRect(myQRect, gradient);
     //Lets draw the text in the center of the triangle if needed
     if (drawText == true)
+    {
+        qp.setOpacity(0.4);
+        qp.setFont(QFont("Helvetica", 20, QFont::Bold));
         qp.drawText(startPos + (width/2),height/2,QString::number(int(value)) + " %");
-
+        qp.setOpacity(1.0);
+    }
 }
 

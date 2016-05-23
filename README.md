@@ -1,5 +1,13 @@
 performanceWidget
 =================
+
+Forked from https://github.com/giordi91/performanceWidget
+Added cmake files for easier cross-compiling and number indicating the core in each cpu widget.
+
+Warning: If you want to use this for production, some performance optimalization is necessary.
+
+Original readme:
+
 WARNING: THis is an old and most likely crappy project, brace yourself you brave coder that dares to enter
 
 This is a small library I wrote in order to create some "performance" widgets.

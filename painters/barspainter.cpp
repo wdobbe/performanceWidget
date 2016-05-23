@@ -14,7 +14,7 @@ void BarsPainter::paint()
 {
     //Create a new painter
     QPainter qpN(m_widget);
-    //Draw gird and BG
+    //Draw grid and BG
     drawBackground(qpN);
     drawGrid(qpN);
 
@@ -46,12 +46,12 @@ void BarsPainter::paint()
         //Then lets draw the actual rectangle
         if (steps > 80)
             painterUtils::drawRectangleBar(qpN ,i*steps+3 + i*2,steps,
-                                           m_height,m_cache[i][subSize-1], true,
+                                           m_height,m_cache[i].values()[subSize-1], true,
                                            m_color1,
                                            m_color2);
         else
             painterUtils::drawRectangleBar(qpN ,i*steps+3 + i*2,steps,
-                                           m_height,m_cache[i][subSize-1], false,
+                                           m_height,m_cache[i].values()[subSize-1], false,
                                            m_color1,
                                            m_color2);
     }

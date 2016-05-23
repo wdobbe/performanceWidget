@@ -23,7 +23,7 @@ void PerformanceWidget::paintEvent(QPaintEvent *e)
 {
 
 
-  //Just silancing the waring about the event not being used
+  //Just silancing the warning about the event not being used
   (void)e;
     if (m_dataQuery == NULL)
         return;

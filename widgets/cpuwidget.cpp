@@ -61,8 +61,9 @@ void CpuWidget::setIndex(int value)
         m_dataQuery.setIndex(value);
     }
     else
-        std::cout<<"ERROR : value exiding number of cores .... skipping"<<std::endl;
-
+    {
+        std::cerr << "ERROR : value " << value << " exceeding number of cores .... skipping" << std::endl;
+    }
 
 }
 

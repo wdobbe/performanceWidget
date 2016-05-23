@@ -151,28 +151,32 @@ const std::vector<float>& CpuQuery::getCpuCache(const int &coreIDx)
 
 }
 
-void CpuQuery::getOrderedCpuCache(const int &coreIDx , std::vector<std::vector<float> > &cache )
+void CpuQuery::getOrderedCpuCache(const int &coreIDx , std::vector<ValueCache> &cache )
 {
     //resize incoming cache
     cache.resize(1);
-    cache[0].resize(m_cacheSize);
+    cache[0].values().resize(m_cacheSize);
     //reorder wanted cache and store it correctly in the target cache
-    reorderCache(m_percentages[coreIDx] , cache[0]);
-
-
-
+    reorderCache(m_percentages[coreIDx] , cache[0].values());
 }
 
-void CpuQuery::getOrderedCpusCache(std::vector<std::vector<float> > &cache)
+void CpuQuery::getOrderedCpusCache(std::vector<ValueCache> &cache)
 {
 
     //resize incoming cache
     cache.resize(m_numberOfCores +1);
     for (int j = 0 ;j < m_numberOfCores +1; j++)
     {
-        cache[j].resize(m_cacheSize);
-        reorderCache(m_percentages[j] , cache[j]);
-
+        cache[j].values().resize(m_cacheSize);
+        reorderCache(m_percentages[j] , cache[j].values());
+        if (j==0)
+        {
+            cache[j].setBackGroundText("μ");
+        }
+        else
+        {
+            cache[j].setBackGroundText(QString::number(j));
+        }
     }
 
 
@@ -281,7 +285,6 @@ float MemoryQuery::convertMemory( long bytes)
     }
 
     return toReturn;
-
 }
 
 
@@ -290,16 +293,16 @@ const std::vector<float>&  MemoryQuery::getMemoryUsageCache()
         return m_cache;
 }
 
-void MemoryQuery::getOrderedMemoryUsageCache(std::vector<float>  &cache)
-{
 
+void MemoryQuery::getOrderedMemoryUsageCache(ValueCache  &cache)
+{
     //resize incoming cache
-    cache.resize(m_cacheSize);
+    cache.values().resize(m_cacheSize);
 //    cache[0].resize(m_cacheSize);
     //reorder wanted cache and store it correctly in the target cache
-    reorderCache(m_cache , cache);
-
+    reorderCache(m_cache , cache.values());
 }
+
 
 void MemoryQuery::reorderCache(std::vector<float> &source, std::vector<float> &target)
 {
@@ -308,7 +311,6 @@ void MemoryQuery::reorderCache(std::vector<float> &source, std::vector<float> &t
     //loop cache size
     for (int i =0 ; i < m_cacheSize ;i++)
     {
-
         target[i]= source[tempIndex];
         tempIndex ++;
         if ( tempIndex > (m_cacheSize-1 ))
@@ -316,6 +318,4 @@ void MemoryQuery::reorderCache(std::vector<float> &source, std::vector<float> &t
             tempIndex = 0;
         }
     }
-
-
 }

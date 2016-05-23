@@ -1,13 +1,13 @@
 #ifndef QUERYRESOURSCE_H
 #define QUERYRESOURSCE_H
 
-
-#include "stdlib.h"
-#include "stdio.h"
-#include "string.h"
+#include "valuecache.h"
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 /** @brief General querying cpus data class
 */
@@ -59,13 +59,13 @@ public:
       * @param coreIDx : which core to query
       * @param cache : the structure in which to store the data
       */
-    void  getOrderedCpuCache(const int &coreIDx , std::vector<std::vector<float> > &cache );
+    void  getOrderedCpuCache(const int &coreIDx , std::vector<ValueCache> &cache );
 
     /**
       *This procedure gathers all the ordered caches for all cpus
       * @param cache : the structure in which to store the data
       */
-    void  getOrderedCpusCache( std::vector<std::vector<float> > &cache );
+    void  getOrderedCpusCache(std::vector<ValueCache> &cache );
 
     /**
       *This procedure generate a 1D matrix with all the current cpu value,
@@ -169,7 +169,7 @@ public :
                     cache is gonna be riesized to fit
       @return , the size of the cache is defined internally
     */
-    void getOrderedMemoryUsageCache(std::vector<float>  &cache);
+    void getOrderedMemoryUsageCache(ValueCache &cache);
 
 private:
     /**

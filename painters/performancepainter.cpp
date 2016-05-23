@@ -10,7 +10,6 @@ PerformancePainter::PerformancePainter(QPaintDevice * widget) :
     m_color1(QColor(0,230,0,255)),
     m_color2(QColor(0,230,0,255)),
     m_widget(widget)
-
 {
 
 
@@ -28,8 +27,6 @@ void PerformancePainter::drawBackground(QPainter &qp)
       qp.drawRoundedRect(0,0,m_width-1,m_height-1,
                            3,3
                            ,Qt::AbsoluteSize);
-
-
 }
 
 
@@ -99,7 +96,7 @@ void PerformancePainter::setGeometry(const int width, const int height)
 
 
 
-void PerformancePainter::setData(std::vector<std::vector<float> > cache)
+void PerformancePainter::setData(std::vector<ValueCache> &cache)
 {
     m_cache = cache;
 }

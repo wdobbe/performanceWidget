@@ -40,16 +40,20 @@ void GraphPainter::paint()
         //Let set needed colors for the background and borer
         qpN.setPen(QColor(244,244,244,255));
         qpN.setBrush(QColor(100,100,100,0));
-        qpN.drawRoundedRect((steps*(i))+(i*2) ,0,(steps),m_height-1,
-                         3,3,Qt::AbsoluteSize);
+        QRectF boundingRect((steps*(i))+(i*2), 0, (steps), m_height-1);
+        //qpN.drawRoundedRect((steps*(i))+(i*2) ,0,(steps),m_height-1,
+        //                 3,3,Qt::AbsoluteSize);
+        qpN.drawRoundedRect(boundingRect, 3, 3, Qt::AbsoluteSize);
+        qpN.setFont(QFont("Helvetica", 30, QFont::Bold));
+        qpN.setOpacity(0.3);
+        qpN.drawText(boundingRect, Qt::AlignCenter, m_cache[i].backGroundText());
+        qpN.setOpacity(1.0);
 
-       //lets use our utils to draw the graph
-       painterUtils:: drawRectangleGraph(qpN,(steps*(i))+(i*2)-1,
-                                         steps,m_height,m_cache[i],
+        //lets use our utils to draw the graph
+        painterUtils::drawRectangleGraph(qpN,(steps*(i))+(i*2)-1,
+                                         steps,m_height,m_cache[i].values(),
                                          m_color1,m_color2);
-
-
-        }
+    }
 
 
 }

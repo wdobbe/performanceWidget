@@ -1,5 +1,7 @@
 #ifndef DATAQUERY_H
 #define DATAQUERY_H
+
+#include "valuecache.h"
 #include <iostream>
 #include <stdio.h>
 #include <vector>
@@ -40,7 +42,7 @@ public :
     int m_index;
     int m_multi;
     /// The cache used to store all the data
-    std::vector<std::vector<float> > m_cache;
+    std::vector<ValueCache> m_cache;
 };
 
 #endif // DATAQUERY_H

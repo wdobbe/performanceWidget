@@ -1,6 +1,10 @@
 #ifndef PERFORMANCEPAINTER_H
 #define PERFORMANCEPAINTER_H
 
+#include "dataQuery/valuecache.h"
+#include <QString>
+
+
 #include <QPainter>
 /**
  * @brief This is an abstract painter
@@ -39,7 +43,7 @@ public:
      * @brief This function is used to set the data that needs to be displayed in by the painter
      * @param cache : The array of values to draw
      */
-    void setData(std::vector<std::vector<float> > cache);
+    void setData(std::vector<ValueCache> &cache);
     /**
      * @brief Set whether or not to drawa the grid
      * @param value : The bool value to set the gird on off
@@ -95,7 +99,7 @@ protected :
     /// The associated widget to paint on
     QPaintDevice * m_widget;
     /// The internal data to be painted
-    std::vector<std::vector<float> >  m_cache;
+    std::vector<ValueCache>  m_cache;
 
 };
 

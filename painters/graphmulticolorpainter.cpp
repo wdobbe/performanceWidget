@@ -90,7 +90,7 @@ void GraphMultiColorPainter::paint()
        m_back = m_colors[size-i-1];
        m_back.setAlpha(80);
        painterUtils:: drawRectangleGraph(qpN,0,
-                                         m_width,m_height,m_cache[size-i-1],
+                                         m_width,m_height,m_cache[size-i-1].values(),
                                          m_colors[size-i-1],m_back);
 
        //paint legend
